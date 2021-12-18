@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_dashboard/controllers/menuController.dart';
 import 'package:flutter_web_dashboard/layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main(List<String> args) {
-  runApp(const MyApp());
+  
+  runApp(
+    const MyApp(),);
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(MenuController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Dash',
