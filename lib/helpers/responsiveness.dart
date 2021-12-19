@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_dashboard/widgets/large_screen.dart';
 
 const int largeScreenSize = 1366;
 const int mediumScreenSize = 768;

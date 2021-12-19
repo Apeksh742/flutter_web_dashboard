@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/controller.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/helpers/responsiveness.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
-import 'package:flutter_web_dashboard/widgets/sideMenuItem.dart';
+import 'package:flutter_web_dashboard/widgets/side_menu_item.dart';
 import 'package:get/get.dart';
 
 class SideMenu extends StatelessWidget {
@@ -13,6 +15,7 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width;
+    log("${menuController.activeItem.toString()}");
     return Container(
       color: light,
       child: ListView(
@@ -67,10 +70,10 @@ class SideMenu extends StatelessWidget {
                           }
                           if (!menuController.isActive(itemName)) {
                             menuController.changeActiveItemto(itemName);
-                            if (ResponsiveWidget.isSmallScreen(context)) {
-                              Get.back();
-                              // go to itemName route
-                            }
+                            if (ResponsiveWidget.isSmallScreen(context)) 
+                              {Get.back();}
+                            navigationController.navigateTo(itemName); 
+                            
                           }
                         },
                       ))

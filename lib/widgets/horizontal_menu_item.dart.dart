@@ -15,7 +15,10 @@ class HorizontalMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: ()=> onTap,
+      onTap: () {
+        if(onTap!=null){
+          onTap!();
+      }},
       onHover: (value){
         value?
         menuController.onHover(itemName??''):
