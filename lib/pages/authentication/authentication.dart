@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/layout.dart';
+import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -76,12 +79,7 @@ class AuthenticationPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Checkbox(value: true, onChanged: (value) {}),
-                      const CustomText(text: "Remember Me"),
-                    ],
-                  ),
+                  const RememberMeWidget(),
                   CustomText(
                     text: "Forgot Password",
                     color: active,
@@ -93,7 +91,7 @@ class AuthenticationPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAll(() => SiteLayout());
+                  Get.offAllNamed(rootRoute);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -123,6 +121,32 @@ class AuthenticationPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class RememberMeWidget extends StatefulWidget {
+  const RememberMeWidget({Key? key}) : super(key: key);
+
+  @override
+  _RememberMeWidgetState createState() => _RememberMeWidgetState();
+}
+
+class _RememberMeWidgetState extends State<RememberMeWidget> {
+  bool? isRemember = true;
+  checkBoxHandler(bool? value) {
+    setState(() {
+      isRemember = value;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(value: isRemember, onChanged: checkBoxHandler),
+        const CustomText(text: "Remember Me"),
+      ],
     );
   }
 }

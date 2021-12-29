@@ -16,7 +16,6 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width;
-    log("${menuController.activeItem.toString()}");
     return Container(
       color: light,
       child: ListView(
@@ -61,20 +60,22 @@ class SideMenu extends StatelessWidget {
           Column(
               mainAxisSize: MainAxisSize.min,
               children: sideMenuItems
-                  .map((itemName) => SideMenuItem(
-                        itemName: itemName == authenticationPagePageRoute
-                            ? "Log Out"
-                            : itemName,
+                  .map((MenuItem menuItem) => SideMenuItem(
+                        itemName: menuItem.name,
                         onTap: () {
-                          if (itemName == authenticationPagePageRoute) {
-                            Get.offAll(()=> const AuthenticationPage());
-                          }
-                          if (!menuController.isActive(itemName)) {
-                            menuController.changeActiveItemto(itemName);
-                            if (ResponsiveWidget.isSmallScreen(context)) 
-                              {Get.back();}
-                            navigationController.navigateTo(itemName); 
+                          if (menuItem.route == authenticationPagePageRoute) {
+                            menuController
+                                .changeActiveItemto(overViewPageDisplayName);
                             
+                            Get.offAllNamed(authenticationPagePageRoute);
+                          }
+                          if (!menuController.isActive(menuItem.name)) {
+                            if(menuItem.name!=authenticationPageDisplayName)
+                            {menuController.changeActiveItemto(menuItem.name);}
+                            if (ResponsiveWidget.isSmallScreen(context)) {
+                              Get.back();
+                            }
+                            navigationController.navigateTo(menuItem.route);
                           }
                         },
                       ))
