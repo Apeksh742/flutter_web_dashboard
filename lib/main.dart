@@ -36,14 +36,14 @@ class MyApp extends StatelessWidget {
     Get.put(NavigationController());
     Get.put(UserController());
     return GetMaterialApp(
-      initialRoute: splashScreenRoute,
+      initialRoute: authenticationPagePageRoute,
       unknownRoute: GetPage(
           name: "/not-found",
           page: () => const PageNotFound(),
           transition: Transition.fadeIn),
       getPages: [
         GetPage(name: rootRoute, page: () => SiteLayout()),
-        GetPage(name: splashScreenRoute, page: ()=>const SplashScreen()),
+        
         GetPage(
             name: authenticationPagePageRoute,
             page: () =>  AuthenticationPage())

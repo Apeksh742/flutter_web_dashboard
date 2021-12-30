@@ -41,4 +41,19 @@ class AuthServices {
       log(e.toString());
     }
   }
+  //  getUserInfo(){
+  //   try {
+  //     if (_auth.currentUser != null) {
+  //       final User? user = _auth.currentUser;
+  //       log("Current user present");
+  //       userController.updateUserInfo(email: user?.email, uid: user?.uid);
+  //     }
+  //   } catch (e) {
+  //     log(e.toString());
+  //   }
+  // }
+  User? getCurrentUser(){
+    return _auth.currentUser;
+  }
+
 }
