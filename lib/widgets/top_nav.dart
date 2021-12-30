@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_dashboard/constants/controller.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/helpers/responsiveness.dart';
+import 'package:get/get.dart';
 
 import 'custom_text.dart';
 
@@ -66,10 +68,12 @@ AppBar topNavigationBar(BuildContext ctx, GlobalKey<ScaffoldState> key) {
         const SizedBox(
           width: 24,
         ),
-        CustomText(
-          text: "Apeksh Agarwal",
-          color: lightGrey,
-        ),
+        Obx(() {
+          return CustomText(
+            text: userController.user.value.email,
+            color: lightGrey,
+          );
+        }),
         const SizedBox(
           width: 16,
         ),

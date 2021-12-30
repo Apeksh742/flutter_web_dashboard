@@ -7,6 +7,8 @@ const clientsPageDisplayName = "Clients";
 const clientsPageRoute = "/clients";
 const authenticationPageDisplayName = "Log out";
 const authenticationPagePageRoute = "/auth";
+const splashScreenRoute = '/splash';
+const splashScreenDisplayName = 'splash';
 
 class MenuItem {
   final String name;

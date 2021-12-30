@@ -1,4 +1,4 @@
-package com.example.flutter_web_dashboard
+package com.responsive_web_panel.app
 
 import io.flutter.embedding.android.FlutterActivity
 

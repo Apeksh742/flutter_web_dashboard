@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/controller.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/helpers/responsiveness.dart';
+import 'package:flutter_web_dashboard/helpers/shared_preferences.dart';
 import 'package:flutter_web_dashboard/pages/authentication/authentication.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
@@ -62,8 +63,9 @@ class SideMenu extends StatelessWidget {
               children: sideMenuItems
                   .map((MenuItem menuItem) => SideMenuItem(
                         itemName: menuItem.name,
-                        onTap: () {
+                        onTap: () async{
                           if (menuItem.route == authenticationPagePageRoute) {
+                            await LocalStorage().setLogInStatus(false);
                             menuController
                                 .changeActiveItemto(overViewPageDisplayName);
                             
